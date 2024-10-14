@@ -2,7 +2,6 @@ import { BottomSheet } from '@alfalab/core-components/bottom-sheet';
 import { ButtonMobile } from '@alfalab/core-components/button/mobile';
 import { CDNIcon } from '@alfalab/core-components/cdn-icon';
 import { Collapse } from '@alfalab/core-components/collapse';
-import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -304,9 +303,7 @@ export const App = () => {
           Перед началом торговли пройдите обучение и завершите тестирование!
         </Typography.Text>
       </div>
-      <Gap size={96} />
-
-      <div className={appSt.bottomBtn}>
+      <div className={appSt.container}>
         <ButtonMobile block view="primary" href="https://alfa.me/AI_test_list">
           Перейти в терминал
         </ButtonMobile>
