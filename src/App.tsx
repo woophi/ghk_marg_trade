@@ -4,7 +4,7 @@ import { CDNIcon } from '@alfalab/core-components/cdn-icon';
 import { Collapse } from '@alfalab/core-components/collapse';
 import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import article_1 from './assets/article_1.png';
 import article_2 from './assets/article_2.png';
@@ -161,9 +161,6 @@ export const App = () => {
   const [expanded, setExpanded] = useState(false);
   const [expanded2, setExpanded2] = useState(false);
   const [expanded3, setExpanded3] = useState(false);
-  const submit = useCallback(() => {
-    window.location.replace('a-investments://CA?type=place&value=marginTradeAnalyticsForPR');
-  }, []);
 
   return (
     <>
@@ -310,7 +307,7 @@ export const App = () => {
       <Gap size={96} />
 
       <div className={appSt.bottomBtn}>
-        <ButtonMobile block view="primary" onClick={submit}>
+        <ButtonMobile block view="primary" href="https://alfa.me/AI_test_list">
           Перейти в терминал
         </ButtonMobile>
       </div>
