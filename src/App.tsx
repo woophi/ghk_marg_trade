@@ -89,21 +89,25 @@ const whatElses = [
     title: 'Маржильное кредитование',
     subtitle: 'Доступный лимит средств от брокера для торговли',
     link: 'a-investments://CA?type=place&value=marginTradeAnalyticsForPR',
+    analytics: 'Margin_credit_3514_click',
   },
   {
     title: 'Тарифы',
     subtitle: 'Сделки РЕПО и СВОП',
     link: null,
+    analytics: 'Tarifs_3514_click',
   },
   {
     title: 'Требуемое обеспечение',
     subtitle: 'Необходимый обеспечение для марджинальных сделок',
     link: 'https://alfabank.ru/make-money/investments/help/trebuemoe-obespechenie/',
+    analytics: 'Required_security_3514_click',
   },
   {
     title: 'Безопасно ли это?',
     subtitle: 'Как безопасно торговать на средства брокера',
     link: 'https://alfabank.ru/make-money/investments/learn/t/kak-snizit-riski-na-fondovom-rinke/',
+    analytics: 'Safety_3514_click',
   },
 ];
 
@@ -195,7 +199,14 @@ export const App = () => {
             </div>
             <Swiper spaceBetween={16} slidesPerView="auto" style={{ width: '100%' }}>
               {swiperData.map((slide, index) => (
-                <SwiperSlide className={appSt.slide} key={slide.link} onClick={() => window.location.replace(slide.link)}>
+                <SwiperSlide
+                  className={appSt.slide}
+                  key={slide.link}
+                  onClick={() => {
+                    window.gtag('event', `Lesson_${index + 1}_3514_click`);
+                    window.location.replace(slide.link);
+                  }}
+                >
                   <div className={appSt.slideRow}>
                     <Typography.Text view="primary-medium" style={{ fontWeight: 600 }}>
                       {slide.title}
@@ -211,14 +222,23 @@ export const App = () => {
             <ButtonMobile
               block
               view="primary"
-              onClick={() => window.location.replace('https://lk.alfadirect.ru/testing/list?mt=mt&sign=sign')}
+              onClick={() => {
+                window.gtag('event', 'Test_3514_click');
+                window.location.replace('https://lk.alfadirect.ru/testing/list?mt=mt&sign=sign');
+              }}
             >
               Пройти тестирование
             </ButtonMobile>
           </div>
         </div>
 
-        <div className={appSt.boxRow} onClick={() => setOpenBs(true)}>
+        <div
+          className={appSt.boxRow}
+          onClick={() => {
+            window.gtag('event', 'Articles_3514_click');
+            setOpenBs(true);
+          }}
+        >
           <Typography.TitleResponsive tag="h2" view="small" font="system" weight="semibold">
             Статьи
           </Typography.TitleResponsive>
@@ -226,7 +246,13 @@ export const App = () => {
         </div>
 
         <div className={appSt.boxExpanded({ expanded })}>
-          <div className={appSt.boxRow} onClick={() => setExpanded(!expanded)}>
+          <div
+            className={appSt.boxRow}
+            onClick={() => {
+              window.gtag('event', 'What_else_3514_click');
+              setExpanded(!expanded);
+            }}
+          >
             <div>
               <Typography.TitleResponsive tag="h2" view="small" font="system" weight="semibold">
                 Что еще?
@@ -243,7 +269,14 @@ export const App = () => {
               <div
                 key={we.title}
                 className={appSt.weRow}
-                onClick={() => (we.link ? window.location.replace(we.link) : setOpenBsTariffs(true))}
+                onClick={() => {
+                  window.gtag('event', we.analytics);
+                  if (we.link) {
+                    window.location.replace(we.link);
+                  } else {
+                    setOpenBsTariffs(true);
+                  }
+                }}
               >
                 <div>
                   <Typography.Text tag="p" defaultMargins={false} view="primary-medium">
@@ -265,7 +298,7 @@ export const App = () => {
           Популярные активы с плечом
         </Typography.TitleResponsive>
 
-        <div className={appSt.bottomRow}>
+        <div className={appSt.bottomRow} onClick={() => window.gtag('event', 'MTS_Bank_3514_click')}>
           <img src={mtsBank} width={48} height={48} />
           <div>
             <Typography.Text tag="p" defaultMargins={false} view="primary-medium">
@@ -276,7 +309,7 @@ export const App = () => {
             </Typography.Text>
           </div>
         </div>
-        <div className={appSt.bottomRow}>
+        <div className={appSt.bottomRow} onClick={() => window.gtag('event', 'MTS_3514_click')}>
           <img src={mts} width={48} height={48} />
           <div>
             <Typography.Text tag="p" defaultMargins={false} view="primary-medium">
@@ -287,7 +320,7 @@ export const App = () => {
             </Typography.Text>
           </div>
         </div>
-        <div className={appSt.bottomRow}>
+        <div className={appSt.bottomRow} onClick={() => window.gtag('event', 'SBER_3514_click')}>
           <img src={sber} width={48} height={48} />
           <div>
             <Typography.Text tag="p" defaultMargins={false} view="primary-medium">
@@ -304,7 +337,12 @@ export const App = () => {
         </Typography.Text>
       </div>
       <div className={appSt.container}>
-        <ButtonMobile block view="primary" href="https://alfa.me/AI_test_list">
+        <ButtonMobile
+          block
+          view="primary"
+          href="https://alfa.me/AI_test_list"
+          onClick={() => window.gtag('event', 'Terminal_3514_click')}
+        >
           Перейти в терминал
         </ButtonMobile>
       </div>
