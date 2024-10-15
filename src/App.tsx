@@ -363,8 +363,15 @@ export const App = () => {
         initialHeight="full"
       >
         <div className={appSt.containerBS}>
-          {articles.map(article => (
-            <div key={article.link} className={appSt.articleRow} onClick={() => window.location.replace(article.link)}>
+          {articles.map((article, index) => (
+            <div
+              key={article.link}
+              className={appSt.articleRow}
+              onClick={() => {
+                window.gtag('event', `Arcticles_${index + 1}_3514_click`);
+                window.location.replace(article.link);
+              }}
+            >
               <img width={56} height={56} src={article.img} />
               <div>
                 <Typography.Text tag="p" defaultMargins={false} view="primary-medium">
@@ -422,7 +429,13 @@ export const App = () => {
             ))}
           </div>
 
-          <div className={appSt.slideRow} onClick={() => setExpanded2(!expanded2)}>
+          <div
+            className={appSt.slideRow}
+            onClick={() => {
+              window.gtag('event', 'Repo_3514_click');
+              setExpanded2(!expanded2);
+            }}
+          >
             <Typography.Text view="primary-medium" weight="medium">
               Что такое РЕПО
             </Typography.Text>
@@ -434,7 +447,13 @@ export const App = () => {
             (покупки) через определённый срок по заранее определённой в этом соглашении цене. Иначе говоря, соглашение РЕПО
             условно может рассматриваться как краткосрочный заём денежных средств под залог ценных бумаг.
           </Collapse>
-          <div className={appSt.slideRow} onClick={() => setExpanded3(!expanded3)}>
+          <div
+            className={appSt.slideRow}
+            onClick={() => {
+              window.gtag('event', 'Swap_3514_click');
+              setExpanded3(!expanded3);
+            }}
+          >
             <Typography.Text view="primary-medium" weight="medium">
               Что такое СВОП
             </Typography.Text>
