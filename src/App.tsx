@@ -88,7 +88,7 @@ const whatElses = [
   {
     title: 'Маржильное кредитование',
     subtitle: 'Доступный лимит средств от брокера для торговли',
-    link: 'a-investments://CA?type=place&value=marginTradeAnalyticsForPR',
+    link: 'https://alfa.me/AI_test_list',
     analytics: 'Margin_credit_3514_click',
   },
   {
